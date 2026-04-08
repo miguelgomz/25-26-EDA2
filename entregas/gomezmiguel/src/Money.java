@@ -57,7 +57,11 @@ public void resolver() {
 
         return (send + more) == money;
     }
-    
+    private void imprimirResultado() {
+        for (int i = 0; i < letrasUnicas.length(); i++) {
+            System.out.println(letrasUnicas.charAt(i) + " = " + asignacion[i]);
+        }
+    }    
 
     public static void main(String[] args) {
         Money examen = new Money();
