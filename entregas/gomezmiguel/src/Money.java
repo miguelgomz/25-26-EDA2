@@ -35,6 +35,28 @@ public void resolver() {
         }
         return false;
     }
+    private boolean esAsignacionValida(int indice, int digito) {
+        if (digitoUsado[digito]) return false;
+        if (digito == 0 && (indice == 0 || indice == 4)) return false;
+        return true;
+    }
+
+    private boolean esSumaCorrecta() {
+        int s = asignacion[0];
+        int e = asignacion[1];
+        int n = asignacion[2];
+        int d = asignacion[3];
+        int m = asignacion[4];
+        int o = asignacion[5];
+        int r = asignacion[6];
+        int y = asignacion[7];
+
+        int send = s * 1000 + e * 100 + n * 10 + d;
+        int more = m * 1000 + o * 100 + r * 10 + e;
+        int money = m * 10000 + o * 1000 + n * 100 + e * 10 + y;
+
+        return (send + more) == money;
+    }
     
 
     public static void main(String[] args) {
