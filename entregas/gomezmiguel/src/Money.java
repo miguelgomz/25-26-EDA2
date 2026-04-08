@@ -16,6 +16,26 @@ public void resolver() {
             System.out.println("No se encontro solucion.");
         }
     }
+    private boolean ejecutarRecursion(int indice) {
+        if (indice == letrasUnicas.length()) {
+            return esSumaCorrecta();
+        }
+
+        for (int digito = 0; digito <= 9; digito++) {
+            if (esAsignacionValida(indice, digito)) {
+                asignacion[indice] = digito;
+                digitoUsado[digito] = true;
+
+                if (ejecutarRecursion(indice + 1)) {
+                    return true;
+                }
+
+                digitoUsado[digito] = false;
+            }
+        }
+        return false;
+    }
+    
 
     public static void main(String[] args) {
         Money examen = new Money();
