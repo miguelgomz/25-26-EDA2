@@ -39,7 +39,30 @@ public class QuickSort {
     }
 
     private static int particionar(int[] array, int izquierda, int derecha) {
-        // Logica de particion pendiente
-        return izquierda; 
+        int pivote = array[derecha];
+        int i = izquierda - 1;
+        
+        System.out.println(getInd() + "--> Particionando | Pivote seleccionado: " + pivote + " (en indice " + derecha + ")");
+        
+        for (int j = izquierda; j < derecha; j++) {
+            System.out.print(getInd() + "  Comparando array[" + j + "] (" + array[j] + ") <= pivote (" + pivote + ") -> ");
+            if (array[j] <= pivote) {
+                System.out.println("SI");
+                i++;
+                int temporal = array[i];
+                array[i] = array[j];
+                array[j] = temporal;
+                System.out.println(getInd() + "    Swap de " + array[j] + " con " + array[i] + ". Array: " + Arrays.toString(array));
+            } else {
+                System.out.println("NO");
+            }
+        }
+        
+        int temporal = array[i + 1];
+        array[i + 1] = array[derecha];
+        array[derecha] = temporal;
+        System.out.println(getInd() + "--> Ubicando pivote en su posicion final (" + (i + 1) + "): " + Arrays.toString(array));
+        
+        return i + 1;
     }
 }
