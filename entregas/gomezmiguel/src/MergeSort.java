@@ -35,6 +35,21 @@ public class MergeSort {
             System.out.println("Estado Final: " + Arrays.toString(array) + "\n");
         }
     }
+    public static void ordenarIterativo(int[] array) {
+        System.out.println("=== MERGE SORT ITERATIVO ===");
+        System.out.println("Estado Inicial: " + Arrays.toString(array));
+        int n = array.length;
+        
+        for (int tamano = 1; tamano < n; tamano *= 2) {
+            System.out.println("\nBloque de tamano: " + tamano);
+            for (int izquierda = 0; izquierda < n - tamano; izquierda += 2 * tamano) {
+                int medio = izquierda + tamano - 1;
+                int derecha = Math.min(izquierda + 2 * tamano - 1, n - 1);
+                fusionar(array, izquierda, medio, derecha);
+            }
+        }
+        System.out.println("\nEstado Final: " + Arrays.toString(array) + "\n");
+    }
 
     private static void fusionar(int[] array, int izquierda, int medio, int derecha) {
         System.out.println(getInd() + "--> Fusionando rangos [" + izquierda + "-" + medio + "] con [" + (medio + 1) + "-" + derecha + "]");
